@@ -1,0 +1,27 @@
+---
+layout: page
+title: Tags
+header: Posts By Tag
+group: navigation
+---
+{% include JB/setup %}
+
+<ul class="tag_box inline">
+  {% assign tags_list = site.tags %}  
+  {% assign tag_show_number = true %}
+  {% include JB/tags_list %}
+  {% assign tag_show_number = nil %}
+</ul>
+
+<hr/>
+
+{% for tag in site.tags %} 
+<div  id="{{ tag[0] }}-ref" class='blog-post-set'>
+  <h2>{{ tag[0] }}</h2>
+  <ul>
+    {% assign pages_list = tag[1] %}  
+    {% include JB/pages_list %}
+  </ul>
+</div>
+{% unless forloop.last %}<hr/>{% endunless %}
+{% endfor %}

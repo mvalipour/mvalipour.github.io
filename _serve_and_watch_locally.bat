@@ -1,0 +1,3 @@
+jekyll serve --watch
+
+pause
