@@ -33,7 +33,7 @@
     <link href="{{ BASE_PATH }}{{ site.JB.atom_path }}" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
     <link href="{{ BASE_PATH }}{{ site.JB.rss_path }}" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
 
-	<link href="{{ BASE_PATH }}assets/prism/prism-okaidia.css" rel="stylesheet" />
+	<link href="{{ BASE_PATH }}/assets/prism/prism-okaidia.css" rel="stylesheet" />
 
 	<link href='http://fonts.googleapis.com/css?family=Nunito:300,400' rel='stylesheet' type='text/css'>
 
@@ -43,7 +43,7 @@
     <div class="navbar">
         <div class="navbar-inner">
             <div class="container-narrow">
-                <a class="brand" href="/">
+                <a class="brand" href="{{ HOME_PATH }}">
                     <span class="icon"></span>
                     <span class="title">{{ site.title }}</span>
                 </a>
@@ -73,8 +73,8 @@
 
     {% include JB/analytics %}
 
-	<script src="{{ BASE_PATH }}assets/prism/prism.js"></script>
-	<script src="{{ BASE_PATH }}assets/prism/prism-csharp.js"></script>
-	<script src="{{ BASE_PATH }}assets/prism/prism-gherkin.js"></script>
+	<script src="{{ BASE_PATH }}/assets/prism/prism.js"></script>
+	<script src="{{ BASE_PATH }}/assets/prism/prism-csharp.js"></script>
+	<script src="{{ BASE_PATH }}/assets/prism/prism-gherkin.js"></script>
 </body>
 </html>
