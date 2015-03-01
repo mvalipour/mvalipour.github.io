@@ -1,12 +1,12 @@
 body,
-h1, h2, h3, h4, h5, h6, 
+h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
 	font-family: 'Nunito', sans-serif;
 	font-weight: 300;
 }
 
-h1, h2, h3, h4, h5, h6, 
-.h1, .h2, .h3, .h4, .h5, .h6  
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6
 {
 	font-weight: 400;
 }
@@ -88,7 +88,7 @@ body  {background:#eee;}
 .page-content {padding:15px 0;}
 
 .page-header, .navbar {
-    background: #27ae60;
+    background: tomato;
     color: #fff;
 	padding-bottom: 10px;
 	margin:0;
@@ -103,7 +103,7 @@ body  {background:#eee;}
 }
 
 .page-header {
-	border-bottom: 10px solid #1c7c44;
+	border-bottom: 10px solid #CC3300;
 	padding-bottom:25px;
 	text-align: right;
 }
@@ -158,12 +158,12 @@ body.post-page .navbar{
 }
 
 .nav > li > a:hover, .nav > li > a:focus {
-    background: #338957;
+    background: #CC3300;
     color: #fff;
 }
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
-    background: #1c7c44;
+    background: #CC3300;
     color: #fff;
 }
 
@@ -199,7 +199,7 @@ body.post-page .navbar{
 .post-item.alt-six { background: #fff; }
 
 body.post-page .date-container {
-	background: #1c7c44;
+	background: #CC3300;
 	color:#fff;
     font-family:Consolas, 'Lucida Console', 'DejaVu Sans Mono', monospace;
 	text-align: center;
@@ -225,7 +225,7 @@ text-align: center;}
 }
 
 .pagination {display:block;background:#E6F0F0; border-top:5px solid #CCE0E0; margin-bottom:0; padding:15px 0;}
-.pagination .archive, 
+.pagination .archive,
 .pagination .next {text-align: right;}
 
 .comment-box {background:#EBF5CC; border-top:5px solid #D6EB99; padding-top:15px;}
