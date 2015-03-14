@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "how I use gulp to take care of my angular templates"
+title: "how I use gulp to take care of my angular template urls"
 description: ""
 category: "front-end"
 tags: [angular, gulp]
