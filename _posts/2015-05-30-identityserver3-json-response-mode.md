@@ -34,7 +34,7 @@ In this article I'm going to explain how we created an OWIN middleware to add su
 
 ## Solution
 
-IdentityServer uses `response_mode` parameter to determine the type of response send back to the requester. Possible options for this parameter are:
+IdentityServer uses `response_mode` parameter to determine the type of response sent back to the requester. Possible options for this parameter are:
 
 - `form_post`: this is the value used in the standard scenario, where idServer returns an html response that contains a `<form>` with all of the response parameters as hidden fields.
 - `fragment`: in this case idServer response is a `302` status code with location header set to `redirect_uri` plus the response parameters set as the hash/fragment part.
