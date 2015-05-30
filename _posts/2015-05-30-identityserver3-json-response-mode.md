@@ -16,7 +16,7 @@ This is generally how a normal login scenario works:
 3. You login on `my-idserver.com` (or may well be already logged in), and your browser does a `POST` to `site-a.com` (with token parameters)
 4. `site-a.com` will handle the posted token and log you in.
 
-This is all perfect; However, halfway down the line, we came up across a need that was not covered by default in IdentityServer3.
+This scenario fits most of our needs; However, halfway down the line, we came across a need that was not covered by in IdentityServer3.
 
 > We need to call into `my-idserver.com` (from a javascript) and retrieve the token for the already logged in user.
 
