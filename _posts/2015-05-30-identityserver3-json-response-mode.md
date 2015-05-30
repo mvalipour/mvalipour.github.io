@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "IdentityServer3 JSON response mode"
+title: "Adding JSON response mode to IdentityServer3"
 description: ""
 category: "back-end"
 tags: [identityserver, openid, security, owin]
