@@ -57,20 +57,20 @@
             <span class="fa fa-github"></span>
           </a>
         </div>
-
-        <footer>
-          <ul class="nav">
-              {% assign pages_list = site.pages %}
-              {% assign group = 'navigation' %}
-              {% include JB/pages_list %}
-          </ul>
-          <p>&copy; 2015. All rights reserved.</p>
-        </footer>
     </div>
 
     <div class="content">
         {{ content }}
     </div>
+
+    <footer>
+      <ul class="nav">
+          {% assign pages_list = site.pages %}
+          {% assign group = 'navigation' %}
+          {% include JB/pages_list %}
+      </ul>
+      <p>&copy; 2015. All rights reserved.</p>
+    </footer>
 
     {% include JB/analytics %}
 

@@ -120,10 +120,7 @@ body.post-page .navbar{
     display:block;
 }
 
-.navbar a.brand,
-.navbar a.brand:hover,
-.navbar a.brand:visited,
-.navbar a.brand:focus {
+.navbar a.brand{
     color: #fff;
     text-decoration: none;
     font-size: 18pt;
@@ -175,9 +172,22 @@ body.post-page .navbar{
 footer {
 	position: absolute;
 	left: 0;
-	right: 0;
 	bottom: 0;
-	margin: 0em 1em;
+	width: 350px;
+	padding: 1em 1em 0;
+	color: white;
+	font-family:Consolas, 'Lucida Console', 'DejaVu Sans Mono', monospace;
+	background: tomato;
+}
+
+footer p {
+	margin: 0;
+}
+
+footer a {
+	color: white;
+	text-decoration: none;
+	border: 0;
 }
 
 footer .nav {
@@ -209,4 +219,46 @@ footer .nav li a {
 	font-family: Verdana;
 	color: #aaa;
 	margin-bottom: 2em;
+}
+
+@media (max-width: 850px) {
+	.content,
+	.navbar,
+	footer {
+		position: relative;
+		width: auto;
+		left: auto;
+		right: auto;
+		top: auto;
+		bottom: auto;
+	}
+
+	.content {
+		padding: 0 1em;
+	}
+
+	.navbar {
+		padding: 1em;
+	}
+
+	.navbar a.brand {
+		padding: 0;
+		text-align: left;
+	}
+
+	.navbar a.brand .icon {
+		width: 50px;
+		border-radius: 15px;
+	}
+
+	.navbar a.brand .title {
+		display: inline;
+	}
+
+	.navbar .social {
+		position: absolute;
+		right: 0;
+		top: 0;
+		padding: 0.8em;
+	}
 }
