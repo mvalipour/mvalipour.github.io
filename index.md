@@ -19,6 +19,9 @@ title: Welcome!
       		{{ post.date | date_to_long_string }}
       	</span>
         &nbsp;
+        <span class="fa fa-comments"></span>
+        <a href="{{ BASE_PATH }}{{ post.url }}#disqus_thread">Comments</a>
+        &nbsp;
       	{% unless post.tags == empty %}
       	<span>
       		<span class="fa fa-tags"></span>

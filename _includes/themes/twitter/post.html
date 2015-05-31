@@ -11,6 +11,9 @@
 		{{ page.date | date_to_long_string }}
 	</span>
 	&nbsp;
+	<span class="fa fa-comments"></span>
+	<a href="{{ BASE_PATH }}{{ page.url }}#disqus_thread">Comments</a>
+	&nbsp;
 	{% unless page.tags == empty %}
 	<span>
 		<span class="fa fa-tags"></span>
