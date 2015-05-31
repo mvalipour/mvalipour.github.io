@@ -244,6 +244,7 @@ footer .nav li a {
 	.navbar a.brand {
 		padding: 0;
 		text-align: left;
+		padding-right: 3em;
 	}
 
 	.navbar a.brand .icon {
