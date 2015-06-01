@@ -44,3 +44,5 @@ title: Welcome!
 	</div>
   {% endfor %}
 </div>
+
+{% include JB/comments-providers/disqus-count %}
