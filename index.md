@@ -45,4 +45,4 @@ title: Welcome!
   {% endfor %}
 </div>
 
-{% include JB/comments-providers/disqus-count %}
+{% include JB/comments-providers/disqus-home %}
