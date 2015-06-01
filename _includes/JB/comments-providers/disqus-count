@@ -1,7 +1,11 @@
 <script type="text/javascript">
     {% if site.safe == false %}var disqus_developer = 1;{% endif %}
     var disqus_shortname = '{{ site.JB.comments.disqus.short_name }}'; // required: replace example with your forum shortname
-    {% if page.wordpress_id %}var disqus_identifier = '{{page.wordpress_id}} {{site.production_url}}/?p={{page.wordpress_id}}';{% endif %}
+    {% if page.url %}
+    var disqus_identifier = '{{site.production_url}}{{page.url}}';
+    var disqus_url = '{{site.production_url}}{{page.url}}';
+    var disqus_script = 'embed.js';
+    {% endif %}
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function () {
       var s = document.createElement('script'); s.async = true;
