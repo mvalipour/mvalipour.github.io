@@ -26,6 +26,12 @@ code {
 	font-size: 80%;
 }
 
+a.btn-twitter {
+	font-size: 22px;
+	color: #55acee !important;
+	vertical-align: baseline;
+}
+
 :target {background:#FFF5CC; outline: solid 20px #FFF5CC; position:relative;}
 :target:before {
 content: ">";

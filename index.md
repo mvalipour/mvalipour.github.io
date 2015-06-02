@@ -29,6 +29,12 @@ title: Welcome!
       		{% include JB/tags_list %}
       	</span>
       	{% endunless %}
+
+      	&mdash;
+      	<a class="btn-twitter"
+      		 href="https://twitter.com/intent/tweet?text={{post.title}}&url={{site.production_url}}{{post.url}}">
+      		<span class="fa fa-twitter"></span>
+      	</a>
       </div>
 			<div class="summary-field">
 				{% if post.content contains '<!--more-->' %}
