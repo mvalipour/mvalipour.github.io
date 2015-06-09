@@ -44,6 +44,8 @@ font-weight: bold;
 color: orange;
 }
 
+img { max-width: 100%; }
+
 a{
 color:firebrick;
 border-bottom:dashed 1px;
