@@ -121,7 +121,7 @@ And set `response_uri` to the `origin` header of the request. This is to make su
     }
 ```
 
-**IMPORTANT Note**: It is very crucial to use SSL (https) for all domains to avoid any man-in-the-middle attack -- altering the Origin header. It is not possible for any malicious javascript to alter `origin` header. However to make things even safer, we use CORS headers to allow only certain domains on `Access-Control-Allow-Origin` -- which is outside of the scopes of this article.
+**IMPORTANT Note**: It is very crucial to use SSL (https) for all domains to avoid any man-in-the-middle attack -- sitting on transport layer (TCP) or below, altering the `Origin` header. That should give us enough protection, given it is not possible for any malicious javascript to alter `origin` header on user's browser. But to make things even safer, we use CORS headers to allow only certain domains on `Access-Control-Allow-Origin` header -- this is outside of the scopes of this article.
 
 Finally we handle the json response:
 
