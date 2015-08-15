@@ -97,7 +97,7 @@ class Person
                         select item;
         }
 
-        public IEnumerable<string> Iterator()
+        public IEnumerable&lt;string> Iterator()
         {
             for (int i = 0; i < length; i++)
 			{
