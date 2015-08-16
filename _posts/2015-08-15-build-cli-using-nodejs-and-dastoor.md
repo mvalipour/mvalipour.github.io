@@ -177,6 +177,8 @@ my-cli --help
 I'm going to stop here with the example but there are all sorts of possibilities with dastoor.
 For more dastoor checkout the [API Reference](https://github.com/mvalipour/dastoor/wiki/API-Reference)
 
+The full source for the sample CLI in this article can be found on [github -- mvalipour/dastoor-sample](https://github.com/mvalipour/dastoor-sample).
+
 ## Conclusion
 
 [dastoor](https://github.com/mvalipour/dastoor) helps you build a CLI tool very easily
