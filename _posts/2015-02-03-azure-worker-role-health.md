@@ -67,7 +67,7 @@ then all you need to do is to call this from `OnStart()` of your worker role cla
 Finally add an end-point to your `ServiceDefinition.csdef` file to specify what port to run it on. -- in this case I use 3000
 
 ```language-markup
-  <WorkerRole name="Empactis.Identity.Populator" vmsize="Small">
+  <WorkerRole name="MyWorkerRole" vmsize="Small">
     <Endpoints>
       <InputEndpoint name="Heartbeat" port="3000" protocol="http" localPort="3000" />
     </Endpoints>
