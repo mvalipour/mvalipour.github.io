@@ -17,10 +17,10 @@ tag_page_dir: tag
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
-title : Mohammad Valipour's Blog
+title : Mo Valipour's Blog
 tagline: false
 author :
-  name : Mohammad Valipour
+  name : Mo Valipour
   email : valipour [at] gmail [dot] com
   github : username
   twitter : username
