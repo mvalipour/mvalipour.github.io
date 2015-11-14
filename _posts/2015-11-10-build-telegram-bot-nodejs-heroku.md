@@ -9,7 +9,7 @@ tags: [nodejs, heroku, telegram]
 
 A little while ago I started using [telegram](https://telegram.org/) as my messaging app (admittedly along-side dozen other apps). But it didn't take long till I realized, there is something different about telegram which is really cool. It's [almost] fully open-source and more importantly highly programmable, so much that they natively support bots! and quickly I found myself wanting to write my own bot.
 
-In this article I will take you through the steps of how to write a very simple telegram bot that interacts with the user on telegram and delivers a service. You can use this as a starting-point for building your more complex bots.
+In this article I will take you through the steps of how to write a very simple telegram bot that interacts with users on telegram and delivers a service. You can use this as a starting-point for building your more complex bots.
 
 <!--more-->
 
@@ -27,14 +27,14 @@ Simply type:
 
 and you will be asked to provide a `name` and `identifier` for your bot. Once done, BotFather will give you a `token` which is what you need to configure in your server component later in this article.
 
-## Domain
+## Problem domain
 
 For the sake of this tutorial, let's assume we need our bot to support the following two commands:
 
 - `/say_hello <your-name>` to reply `Hello <your-name>`
-- `/sum <num1> <num2> ...` to sum up any given numbers and reply the result
+- `/sum <num1> <num2> ...` to sum up any given numbers and reply with the result
 
-## Write bot server
+## Bot server
 
 Next, we need to write a node.js program that listens to the incoming communications from bot users and responds to them.
 
@@ -87,7 +87,7 @@ bot.onText(/^\/sum((\s+\d+)+)$/, function (msg, match) {
 });
 ```
 
-This one has a slightly more complicated reg-ex which extracts all of the numbers given as the command parameter, then split the chunk, convert them to int (`+` prefix) and sum-up. Then similar to above, send the result back to the user.
+This one has a slightly more complicated reg-ex which extracts all of the numbers given as the command parameter, then split the chunk, convert them to integer (`+` prefix) and sum-up. Then similar to above, send the result back to the user.
 
 ## Run!
 
@@ -103,7 +103,7 @@ Your bot should now be responding to the messages:
 
 ## Http end-point
 
-There are two reasons why we need to add a http end-point to our node.js bot server:
+There are two reasons why we need to add an http end-point to our node.js bot server:
 
 **First of all** to continue enjoying Heroku for free, we want our polling loop to run for-ever on a web role (as oppose to a paid [Heroku scheduler add-on](https://devcenter.heroku.com/articles/scheduler)). Heroku shuts the web role process down, if no http port is listened from the process within 30 seconds.
 
@@ -133,6 +133,20 @@ var server = app.listen(process.env.PORT, function () {
 });
 ```
 
+Finally we need to add an `index.js` file to start both bot and web servers:
+
+```language-javascript
+require('./bot');
+require('./web');
+```
+
+Now by starting the app (`node .`), you should get an output like this:
+
+```language-bash
+bot server started...
+Web server started at http://0.0.0.0:64861
+```
+
 ## Deploy
 
 Finally we need to create and deploy our Heroku app.
@@ -147,7 +161,7 @@ This will create a new app in your heroku account (you will be asked to setup on
 heroku open
 ```
 
-Each time you need to deploy the app, simply run the following command and push your latest code to heroku remote repo, which then consequently result in your node.js app building and starting on the Heroku servers.
+Each time you need to deploy the app, simply run the following command and push your latest code to heroku remote repo, which then results in your node.js app to build and start on Heroku server.
 
 ```language-bash
 git push heroku master
@@ -156,6 +170,8 @@ git push heroku master
 ## Conclusion
 
 This is a minimalistic example to show you how easy and cool it is to create your own telegram bot in no time. You can keep adding more and more complexity and business logic to your server. For example remember users' choice in a database to then report back to them in later commands, etc.
+
+Telegram opens up a whole new ways of communicating with users, including sending audio, photo, location, etc. and even communicating with user chat groups. For more information see [telegram bot API](https://core.telegram.org/bots/api).
 
 A complete source code of this tutorial can be found on the following GitHub repository:
 
