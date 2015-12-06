@@ -3,7 +3,7 @@ layout: post
 title: "Configure a telegram bot webhook into an existing express app"
 description: ""
 category: "node.js"
-tags: [nodejs, heroku, telegram]
+tags: [nodejs, heroku, telegram, webhook]
 ---
 {% include JB/setup %}
 
