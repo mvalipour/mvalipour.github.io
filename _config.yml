@@ -9,7 +9,6 @@ kramdown:
 permalink: /:categories/:year/:month/:day/:title
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md"]
-highlighter: pygments
 
 port: 4000
 baseurl: /
