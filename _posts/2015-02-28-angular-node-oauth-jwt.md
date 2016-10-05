@@ -46,7 +46,7 @@ In order to use the google OAuth service, you need to have an OAuth client setup
 
 Once you have it all setup, create a `config.js` file to store your keys in.
 
-```language-javascript
+```javascript
 var config = {
   auth: {
     token: {
@@ -67,17 +67,17 @@ module.exports = config;
 
 and import it in your `server.js`:
 
-```language-javascript
+```javascript
 var config = require('./config');
 ```
 
 Now go ahead and setup passport to use Google OAuth:
 
-```language-javascript
+```javascript
     var passport = require('passport');
     var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 ```
-```language-javascript
+```javascript
   passport.use(new GoogleStrategy({
       clientID        : config.auth.google.clientId,
       clientSecret    : config.auth.google.clientSecret,
@@ -117,7 +117,7 @@ Then the retrieved user is passed to the `done()` method which is used later in 
 
 Before getting to JWT, note that you need to register your passport on your express `app` like this:
 
-```language-javascript
+```javascript
   app.use(passport.initialize());
 
   app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
@@ -128,11 +128,11 @@ Before getting to JWT, note that you need to register your passport on your expr
 
 The two registered routes are for starting the OAUth authentication and handling the OAuth callback respectively.
 
-```language-javascript
+```javascript
     var jwt = require('jsonwebtoken');
 ```
 
-```language-javascript
+```javascript
   app.get('/auth/google/callback', function(req, res, next){
     passport.authenticate('google', function(err, user, info){
         if (err) return next(err);
@@ -171,7 +171,7 @@ Finally this object is signed using the `config.auth.token.secret` secret and `c
 
 Now all you need is a login screen with a link to the OAuth action:
 
-```language-markup
+```markup
   <a href="/auth/google">Login with Google!</a>
 ```
 
@@ -185,7 +185,7 @@ Later on, in this article we will see that our angular app, will send the token 
 
 Luckily, `jwt.verify()` does all of these for us:
 
-```language-javascript
+```javascript
 function middleware(req, res, next) {
   var token = req.headers['x-access-token'];
 
@@ -209,7 +209,7 @@ function middleware(req, res, next) {
 
 now you can add this middleware to your `api` route to make them secure:
 
-```language-javascript
+```javascript
      app.use('/api', middleware, controllersApp);
 ```
 
@@ -219,7 +219,7 @@ now you can add this middleware to your `api` route to make them secure:
 
 We will be using [angular-jwt](https://github.com/auth0/angular-jwt) to decode the token:
 
-```language-javascript
+```javascript
 angular.module('portal', [
 'ui.router',
 'ngCookies',
@@ -261,7 +261,7 @@ angular.module('portal', [
 
 for example our logout looks like this:
 
-```language-javascript
+```javascript
   $scope.logout = function(){
     principal.logout();
     $window.location.href = '/';
@@ -272,7 +272,7 @@ However this is just a choice, and you could choose to build the `principal` as 
 
 This factory can now be used in any other part of our app to retrieve the logged-in user. e.g. on a top-menu
 
-```language-javascript
+```javascript
 .controller('topMenuController', function($scope, principal){
   $scope.userName = principal.user.name;
 });
@@ -280,7 +280,7 @@ This factory can now be used in any other part of our app to retrieve the logged
 
 Finally will configure [Restangular](https://github.com/mgonto/restangular) to send the `x-access-token` header on every request it sends to the API:
 
-```language-javascript
+```javascript
 .run(function(Restangular, principal) {
     Restangular.setDefaultHeaders({'x-access-token': principal.token});
 });
@@ -290,7 +290,7 @@ Finally will configure [Restangular](https://github.com/mgonto/restangular) to s
 
 So we want to mark our routes to be authorized for a specific user role. We set this as a `data` on our `routes` (in this case a root state for the admin area).
 
-```language-javascript
+```javascript
   $stateProvider.state('admin', {
       abstract: true,
       url: '/admin',
@@ -301,7 +301,7 @@ So we want to mark our routes to be authorized for a specific user role. We set 
 
 And of course we will handle the `stateChangeStart` event to enforce this:
 
-```language-javascript
+```javascript
 angular.module('portal')
 
 .run(function($rootScope, $state, principal){

@@ -33,7 +33,7 @@ The following parameters are required to call this script:
 
 At the time of writing this post, TargetProcess does not support any type of authentication other than `Basic`, hence the need to pass-in the password.
 
-```language-powershell
+```powershell
 Param(
   [Parameter(Mandatory=$true)][string]$git_url,
   [Parameter(Mandatory=$true)][string]$github_token,

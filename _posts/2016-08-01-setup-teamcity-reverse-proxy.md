@@ -18,7 +18,7 @@ In case you are installing TeamCity on a windows machine that already has anothe
 - Stop TeamCity service (to then start again after the next step)
 - Open `<TEAMCITY_DIR>/conf/server.xml` and add/change the following attributes on the `<Connector>` node.
 
-```language-markup
+```markup
 <Connector
   port="8080"
   proxyName="teamcity.domain.com"
@@ -35,7 +35,7 @@ It is very important to add the `proxyName` and `proxyPort`, otherwise part of t
 - Select your site in IIS and go to *Url Rewrite*
 - Add an Inbound Rule with the following details (If you prefer you can avoid the UI and directly add this to the `web.config` file under the physical path of your site)
 
-```language-markup
+```markup
 <rule name="teamcity" enabled="true" patternSyntax="Wildcard" stopProcessing="true">
     <match url="*" />
     <action type="Rewrite" url="http://localhost:8080/{R:0}" />
@@ -44,7 +44,7 @@ It is very important to add the `proxyName` and `proxyPort`, otherwise part of t
 
 In case have other applications with the same need, you would need to provide `<condition>` for your rules and have one rule per application to control the traffic based on the `HTTP_HOST`
 
-```language-markup
+```markup
 <rule name="teamcity" enabled="true" patternSyntax="Wildcard" stopProcessing="true">
     <match url="*" />
     <conditions>

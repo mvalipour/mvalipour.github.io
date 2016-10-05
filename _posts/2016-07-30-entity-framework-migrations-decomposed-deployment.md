@@ -42,7 +42,7 @@ In those cases where we had for example a database table or column renamed, we w
 
 In `Startup.cs` or `Global.asax.cs`:
 
-```language-csharp
+```csharp
 #if DEBUG
     Database.SetInitializer(new MigrateDatabaseToLatestVersion<AppDatabase, Migrations.Migrations.Configuration>());
 #else
@@ -55,7 +55,7 @@ This does exactly what it says on the tin:
 - **On Local:** Migrates it's database to latest migration.
 - **In Production:** Ensures that the database migrations is **NOT AHEAD** of the model assembly it is using. -- this is a safety measure making sure even if we ever accidentally deployed web before database, it stops the site from firing up.
 
-```language-csharp
+```csharp
 public class RequireDatabaseToBeUpToDate<TContext, TMigrationsConfiguration> : IDatabaseInitializer<TContext>
     where TContext : DbContext
     where TMigrationsConfiguration : DbMigrationsConfiguration, new()
@@ -76,6 +76,6 @@ public class RequireDatabaseToBeUpToDate<TContext, TMigrationsConfiguration> : I
 
 ### Running migrations against live database
 
-```language-bash
+```bash
 $migrate = "<path>\migrate.exe" $migrateConfig = "<path>\migrate.exe.config" $connectionString = <your-live-connection-string> & $migrate <your-project-migration-assembly> /startupConfigurationFile=$migrateConfig <your-migration-configuration-type-name> /connectionString=$connectionString /connectionProviderName=System.Data.SqlClient /verbose
 ```

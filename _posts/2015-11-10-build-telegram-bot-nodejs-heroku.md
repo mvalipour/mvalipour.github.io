@@ -21,7 +21,7 @@ Like many other platforms, the first thing you need to do is to register your ap
 
 Simply type:
 
-```language-bash
+```bash
 /newbot
 ```
 
@@ -40,14 +40,14 @@ Next, we need to write a node.js program that listens to the incoming communicat
 
 For this we use [node-telegram-bot-api](https://github.com/yagop/node-telegram-bot-api) which is a nicely-done wrapper around telegram's bot api.
 
-```language-bash
+```bash
 npm init
 npm install --save node-telegram-bot-api
 ```
 
 Now create `bot.js` file:
 
-```language-javascript
+```javascript
 var token = '<token-from-bot-father>';
 
 var Bot = require('node-telegram-bot-api'),
@@ -60,7 +60,7 @@ This will instantiate a new instance of `Bot` in *polling mode* (i.e. an infinit
 
 Now, let's write our first command listener:
 
-```language-javascript
+```javascript
 bot.onText(/^\/say_hello (.+)$/, function (msg, match) {
   var name = match[1];
   bot.sendMessage(msg.chat.id, 'Hello ' + name + '!').then(function () {
@@ -75,7 +75,7 @@ Then we send a *text* message back to the sender of the original message (`msg.c
 
 And similarly our `sum` command:
 
-```language-javascript
+```javascript
 bot.onText(/^\/sum((\s+\d+)+)$/, function (msg, match) {
   var result = 0;
   match[1].trim().split(/\s+/).forEach(function (i) {
@@ -93,7 +93,7 @@ This one has a slightly more complicated reg-ex which extracts all of the number
 
 Run the bot and bingo!
 
-```language-bash
+```bash
 node ./bot.js
 ```
 
@@ -111,11 +111,11 @@ There are two reasons why we need to add an http end-point to our node.js bot se
 
 So I spin up a simple web server that simply returns app version number as json.
 
-```language-bash
+```bash
 npm install --save express
 ```
 
-```language-javascript
+```javascript
 var express = require('express');
 var packageInfo = require('./package.json');
 
@@ -135,14 +135,14 @@ var server = app.listen(process.env.PORT, function () {
 
 Finally we need to add an `index.js` file to start both bot and web servers:
 
-```language-javascript
+```javascript
 require('./bot');
 require('./web');
 ```
 
 Now by starting the app (`node .`), you should get an output like this:
 
-```language-bash
+```bash
 bot server started...
 Web server started at http://0.0.0.0:64861
 ```
@@ -151,19 +151,19 @@ Web server started at http://0.0.0.0:64861
 
 Finally we need to create and deploy our Heroku app.
 
-```language-bash
+```bash
 heroku create
 ```
 
 This will create a new app in your heroku account (you will be asked to setup one if have no account setup) with a random name. To open the app in your browser simply run:
 
-```language-bash
+```bash
 heroku open
 ```
 
 Each time you need to deploy the app, simply run the following command and push your latest code to heroku remote repo, which then results in your node.js app to build and start on Heroku server.
 
-```language-bash
+```bash
 git push heroku master
 ```
 

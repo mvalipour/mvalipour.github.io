@@ -1,7 +1,10 @@
 # This is the default format.
 # For more see: http://jekyllrb.com/docs/permalinks/
 
-markdown: rdiscount
+markdown: kramdown
+
+kramdown:
+  input: GFM
 
 permalink: /:categories/:year/:month/:day/:title
 

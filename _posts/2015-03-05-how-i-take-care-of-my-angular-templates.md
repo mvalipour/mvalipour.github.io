@@ -23,7 +23,7 @@ I found that there can be a neat trick added to the gulp to shorten the `templat
 I use [Y140  - LIFT principal](https://github.com/johnpapa/angular-styleguide#application-structure-lift-principle) standard for my application structure.
 
 
-```language-bash
+```bash
 /app
   /todos
     index.js
@@ -53,7 +53,7 @@ To solve this issue, I have defined two conventions:
 
 Our gulp squash task replaces `>` (with folder path) in `.js` files before the squash happens.
 
-```language-javascript
+```javascript
 var jsFiles = ['./app/**/index.js', './app/**/*.js'];
 
 gulp.task('squash_js', function(){
@@ -79,7 +79,7 @@ gulp.task('squash_js', function(){
 
 Now if you use this in your ui-router:
 
-```language-javascript
+```javascript
   ...
     templateUrl: '>',
     templateUrl: '>/add.html',
@@ -88,7 +88,7 @@ Now if you use this in your ui-router:
 
 gulp converts it to:
 
-```language-javascript
+```javascript
   ...
     templateUrl: 'app/customers/index.html',
     templateUrl: 'app/customers/add.html',
@@ -101,7 +101,7 @@ It is important that the path we use in our template cache file is compatible wi
 
 For clarity, here is how my template cache task looks like:
 
-```language-javascript
+```javascript
 var templateFiles = ['./app/**/*.html'];
 
 gulp.task('squash_template', function () {

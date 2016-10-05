@@ -25,7 +25,7 @@ In our case we already have an express web app and so wish to add an api end-poi
 
 Simply change the setup of your express web app to include the following:
 
-```language-javascript
+```javascript
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
@@ -41,7 +41,7 @@ Then we listen to the `/<token>` path for `POST` requests and simply call into t
 
 Next, we need to configure webhook on our telegram bot:
 
-```language-javascript
+```javascript
 var bot = new Bot(token);
 bot.setWebHook('https://my-web-root.com/' + bot.token);
 ```
@@ -54,7 +54,7 @@ As cool as webhooks are, unfortunately you can't utilize them on development mac
 
 The solution I came up with is to fall-back to the polling model for the development environment:
 
-```language-javascript
+```javascript
 var bot;
 
 if(process.env.NODE_ENV === 'production') {

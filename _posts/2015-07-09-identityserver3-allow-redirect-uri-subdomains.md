@@ -17,7 +17,7 @@ One of the security measures build into IdentityServer is restricting
 the list of URIs allowed (for each client).
 
 
-```language-csharp
+```csharp
 var client = new Client
 {
     ClientName = "JS Client",
@@ -38,7 +38,7 @@ But what if we have [an unpredictable list of] subdomains in our app? Exact matc
 
 What we wish here is to have this:
 
-```language-csharp
+```csharp
     RedirectUris = new []
     {
         "https://*.myapp.com/callback.html",
@@ -48,7 +48,7 @@ What we wish here is to have this:
 Luckily IdentityServer3 have support for overriding the default validator,
 and what we need to do is to write one that does match using wildcards (as suggested above):
 
-```language-csharp
+```csharp
 public class WildcardRedirectUriValidator : DefaultRedirectUriValidator
 {
     public override Task<bool> IsRedirectUriValidAsync(string requestedUri, Client client)
@@ -97,7 +97,7 @@ another parameter used for logout process. (see [documentation](https://identity
 
 Finally you would need to configure this validator when setting up your identity server.
 
-```language-csharp
+```csharp
 public void Configuration(IAppBuilder app)
 {
     var options = new IdentityServerOptions

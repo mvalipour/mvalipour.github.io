@@ -47,7 +47,7 @@ So what we will be adding to our identity server is a proxy middleware to sit be
 
 The first thing we need to setup is the middleware pipeline:
 
-```language-csharp
+```csharp
   public void Configuration(IAppBuilder app)
   {
       app.Use<JsonHandlerMiddleware>();
@@ -59,7 +59,7 @@ The first thing we need to setup is the middleware pipeline:
 
 This ensures that for incoming requests, the `JsonHandlerMiddleware` is hit first, giving us the oportunity to intercept.
 
-```language-csharp
+```csharp
     public class JsonHandlerMiddleware : OwinMiddleware
     {
         public JsonHandlerMiddleware(OwinMiddleware next) : base(next)
@@ -70,7 +70,7 @@ This ensures that for incoming requests, the `JsonHandlerMiddleware` is hit firs
 
 The proxy works like this:
 
-```language-csharp
+```csharp
     public override Task Invoke(IOwinContext context)
     {
         var mode = context.Request.Query["response_mode"];
@@ -105,7 +105,7 @@ Apart from that, we need to set `response_mode` to `fragment` to get the identit
 
 And set `response_uri` to the `origin` header of the request. This is to make sure that `json` model only works if the request comes from a safe origin. IdentityServer3 by default validates the `redirect_uri` (in this case the requester Origin) against a white-list of domains.
 
-```language-csharp
+```csharp
     private static IOwinContext CloneContext(IOwinContext context)
     {
         var clonedQuery = context.Request.Query.ToDictionary(a => a.Key, a => a.Value.First());
@@ -125,7 +125,7 @@ And set `response_uri` to the `origin` header of the request. This is to make su
 
 Finally we handle the json response:
 
-```language-csharp
+```csharp
     private bool HandleJsonResponse(IOwinContext context, IOwinContext innerContext)
     {
         if (innerContext.Response.StatusCode != 302)
@@ -159,7 +159,7 @@ Then we are reading the client and making sure this client has json response ena
 
 And here is how the `Rewrite` function works:
 
-```language-csharp
+```csharp
     private const string AntiHijackingPrefix = "while(1);";
 
     private bool RewriteResponseAsJson(EmpactisSystem client, IOwinContext context, IOwinContext innerContext)
@@ -221,7 +221,7 @@ In summary:
 
 Now all we have to do to request our token as JSON is to construct a URL with the correct parameters and send a `GET` request to the identity server. (using your preferred way of sending ajax request -- e.g. `$http` in angular or `$.ajax` in jquery).
 
-```language-javascript
+```javascript
   var nonce = Date.now() + "" + Math.random();
   var url =
       idServerUrl + "/connect/authorize?" +

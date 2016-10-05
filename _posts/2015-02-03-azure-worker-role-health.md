@@ -24,7 +24,7 @@ So the main question is:
 
 First define your server behavior: this is a very simple action of building a response for incoming requests. In this case I want to output the version of the running worker.
 
-```language-csharp
+```csharp
   public class Startup
   {
     public void Configuration(IAppBuilder app)
@@ -44,7 +44,7 @@ First define your server behavior: this is a very simple action of building a re
 
 then you need to write a code to start your server:
 
-```language-csharp
+```csharp
   public static class Server
   {
     public static IDisposable Start()
@@ -66,7 +66,7 @@ then all you need to do is to call this from `OnStart()` of your worker role cla
 
 Finally add an end-point to your `ServiceDefinition.csdef` file to specify what port to run it on. -- in this case I use 3000
 
-```language-markup
+```markup
   <WorkerRole name="MyWorkerRole" vmsize="Small">
     <Endpoints>
       <InputEndpoint name="Heartbeat" port="3000" protocol="http" localPort="3000" />
@@ -76,6 +76,6 @@ Finally add an end-point to your `ServiceDefinition.csdef` file to specify what 
 
 Now if your deploy to your cloud service, you if you open `http://<your-cloudservice-url>:3000/health` in your browser, you should get:
 
-```language-bash
+```bash
 { "version": "1.0.0.0" }
 ```

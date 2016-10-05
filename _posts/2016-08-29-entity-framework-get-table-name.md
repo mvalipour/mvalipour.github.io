@@ -13,7 +13,7 @@ There are times when you find yourself needing to construct a raw SQL when worki
 
 One of the dilemmas is to avoid hard-coding the table name, when the schema is all driven by EF. Well, here is the code you would need to get hold of the table name for a particular entity type:
 
-```language-csharp
+```csharp
 public static string GetTableName(this ObjectContext context, Type t)
 {
   var entityName = t.Name;

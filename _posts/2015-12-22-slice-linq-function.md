@@ -13,7 +13,7 @@ One of the useful methods I found missing from built-in LINQ functions is the ab
 
 Pass `fixedSize=true` to ensure the last set also gets the same number of items in it.
 
-```language-csharp
+```csharp
 public static IEnumerable<IEnumerable<T>> Slice<T>(this IEnumerable<T> items, int size, bool fixedSize = false, T defaultValue = default(T))
 {
     var start = 0;

@@ -18,7 +18,7 @@ One of the ways to feed translated text into `angular-template` is to
 store translations into a JSON dictionary file and link it to the translator.
 (using [this](https://github.com/angular-translate/bower-angular-translate-loader-static-files) plugin.)
 
-```language-javascript
+```javascript
 {
     "-- Select --": "-- انتخاب کنید --",
     "About": "درباره ما",
@@ -26,7 +26,7 @@ store translations into a JSON dictionary file and link it to the translator.
 }
 ```
 
-```language-javascript
+```javascript
 .config(function($translateProvider){
   $translateProvider.useStaticFilesLoader({
     prefix: '/lang/',
@@ -59,14 +59,14 @@ command line arguments.
 Luckily there is an `npm` package called [yargs](https://www.npmjs.com/package/yargs) that parses command line arguments
 into a ready-to-use object.
 
-```language-javascript
+```javascript
 var argv = require('yargs').argv;
 ```
 
 Now it's pretty easy to add few lines of code to build the `add-translation`
 task:
 
-```language-javascript
+```javascript
 var fs = require('fs');
 var _ = require('underscore');
 
@@ -100,7 +100,7 @@ back into the dictionary file.
 
 Once this is added to the `gulpfile.js`, it can be used like this in the terminal:
 
-```language-bash
+```bash
 $ gulp add-translation -p "some phrase" -t "یک عبارت"
 ```
 

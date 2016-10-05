@@ -17,14 +17,13 @@ Visual studio has a tool that will alert you about this:
 
 ![](http://i.imgur.com/IqFSGYa.png)
 
-
 But what about the build server? How do we make sure that the changes someone has proposed isn't breaking the consistency of versions?
 
 I was hoping NuGet command line would provide me with a command to validate (or at least retrieve this).
 
 But nevertheless, that's why I wrote this little PowerShell script to do that.
 
-```language-powershell
+```powershell
 Get-ChildItem -Recurse -Depth 5 -Path "." |
     ? { $_.Name -eq "packages.config" } |
     % { ([xml](Get-Content -Path $_.FullName)).packages.package | select id, version } |

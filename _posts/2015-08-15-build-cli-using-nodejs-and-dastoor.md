@@ -20,7 +20,7 @@ The example that we will implement is an app with a command to sum any number of
 
 To start, create an empty nodejs app and install dastoor:
 
-```language-bash
+```bash
 mkdir my-cli
 cd my-cli
 npm init
@@ -29,7 +29,7 @@ npm install --save dastoor
 
 Now add `index.js` with the following code:
 
-```language-javascript
+```javascript
 #! /usr/bin/env node
 var dastoor = require('dastoor'),
     runner  = new dastoor.Runner(),
@@ -45,7 +45,7 @@ this is enough for our simple CLI to be wired.
 Then create a `commands.js` file to define your command structure in.  
 As your app becomes bigger and bigger you can break this file down into many other files.
 
-```language-javascript
+```javascript
 var cli = require('dastoor').builder;
 
 var root = cli.node('my-cli', function() {
@@ -58,7 +58,7 @@ module.exports = root;
 OK, it's time to see some output.  
 Before we would be able to run our CLI from terminal, we need to register it with npm. To do so add the following to your `package.json`:
 
-```language-javascript
+```javascript
   "bin": {
     "my-cli": "index.js"
   }
@@ -69,25 +69,25 @@ npm will add `my-cli` as a terminal command.
 
 On dev machine however, you would have to manually do the linking by running the following command from your app directory:
 
-```language-bash
+```bash
 npm link
 ```
 
 Now by running
 
-```language-bash
+```bash
 my-cli
 ```
 
 You should get:
 
-```language-bash
+```bash
 hello world!
 ```
 
 Now let's add some real command to do the sum. We are going to add it to `commands.js` file:
 
-```language-javascript
+```javascript
 cli.node('my-cli.sum', { terminal: true})
 .controller(function(args) {
    var res = args.initial || args.i || 0;
@@ -111,19 +111,19 @@ We simply sum all of the numbers and the `i` parameter and print the result in t
 
 Now entering this into terminal:
 
-```language-bash
+```bash
 my-cli sum 1 2 3 -i 100
 ```
 
 will output:
 
-```language-bash
+```bash
 Sum: 106
 ```
 
 Let's add some help to our command. Add the following method call to the end of the `.node('my-cli.sum)` command:
 
-```language-javascript
+```javascript
 .help({
     description: 'sums numbers',
     options: [{
@@ -138,12 +138,12 @@ Let's add some help to our command. Add the following method call to the end of 
 
 This will tell dastoor all it needs to know to render help output.
 
-```language-bash
+```bash
 my-cli sum -h
 my-cli sum --help
 ```
 
-```language-bash
+```bash
 >   sums numbers
 
     options:
@@ -156,15 +156,15 @@ my-cli sum --help
 
 Similarly for `.node('my-cli')`:
 
-```language-javascript
+```javascript
 .help('my test cli')
 ```
 
-```language-bash
+```bash
 my-cli --help
 ```
 
-```language-bash
+```bash
 >   my test cli
 
     options:
